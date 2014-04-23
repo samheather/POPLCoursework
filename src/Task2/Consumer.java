@@ -11,12 +11,14 @@ public class Consumer extends Thread {
 	@Override
 	public void run() {
 		while (true) {
+			System.out.println("Consumer Loop Entered");
 			try {
 				System.out.println(buffer.get());
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			System.out.println("Consumer Loop Exited");
 		}
 		
 	}

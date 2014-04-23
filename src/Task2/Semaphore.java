@@ -10,10 +10,11 @@ public class Semaphore {
 		this.originalSize = count;// Remove verification?
 	}
 	
-	public synchronized void waitForSemaphore() throws InterruptedException {
-		while (value == 0) {wait();}
+	public synchronized void waitForSemaphore(String info) throws InterruptedException {
+		System.out.println("Wait requested by: " + info);
+		while (value <= 0) {wait();}
+		System.out.println("Semaphore waited and gave access, orig size: " + originalSize);
 		value--;
-		notifyAll();// Necessary?
 	}
 	
 	public synchronized void notifySemaphore() {

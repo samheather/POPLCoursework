@@ -10,9 +10,9 @@ public class Task2 {
 		Consumer c2 = new Consumer(mainBuffer);
 
 		p1.start();
-		p2.start();
+//		p2.start();
 		c1.start();
-		c2.start();
+//		c2.start();
 		
 	}
 
