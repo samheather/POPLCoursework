@@ -8,7 +8,7 @@ public class Semaphore {
 		this.value = count;
 	}
 	
-	public synchronized void aquire(String info) throws InterruptedException {
+	public synchronized void acquire(String info) throws InterruptedException {
 		System.out.println("Wait requested by: " + info);
 		while (value <= 0) {wait();}
 		value--;
