@@ -9,7 +9,7 @@ public class Semaphore {
 	}
 	
 	public synchronized void acquire(String info) throws InterruptedException {
-		System.out.println("Wait requested by: " + info);
+//		System.out.println("Wait requested by: " + info);
 		while (value <= 0) {wait();}
 		value--;
 	}
