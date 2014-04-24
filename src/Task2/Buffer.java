@@ -10,7 +10,6 @@ public class Buffer {
 	private Semaphore numberEmptySpaces = new Semaphore(size);
 	private Semaphore generalSharedDataMutex = new Semaphore(1);
 	
-	
 	public void put(int input) throws InterruptedException {
 		numberEmptySpaces.acquire();
 		generalSharedDataMutex.acquire();
