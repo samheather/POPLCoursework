@@ -1,7 +1,9 @@
 package Task2;
 
-public class Task2 {
+import java.util.concurrent.Semaphore;//
 
+public class Task2 {
+	
 	public static void main(String[] args) {
 		Buffer mainBuffer = new Buffer();
 		Producer p1 = new Producer(mainBuffer);
@@ -14,6 +16,22 @@ public class Task2 {
 		c1.start();
 //		c2.start();
 		
+//		Semaphore jNumberInBuffer = new Semaphore(0);//
+//		System.out.println(jNumberInBuffer.availablePermits());
+//		jNumberInBuffer.release();
+//		System.out.println(jNumberInBuffer.availablePermits());
+//		jNumberInBuffer.release();
+//		System.out.println(jNumberInBuffer.availablePermits());
+//		try {
+//			jNumberInBuffer.acquire();
+//			jNumberInBuffer.acquire();
+//			jNumberInBuffer.acquire();
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println(jNumberInBuffer.availablePermits());
+//		
 	}
 
 }
