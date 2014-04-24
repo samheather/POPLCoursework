@@ -2,7 +2,7 @@ package Task2;
 
 public class Semaphore {
 
-	private int value;
+	public int value;
 	
 	public Semaphore(int count) {
 		this.value = count;
