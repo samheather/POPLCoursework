@@ -1,7 +1,5 @@
 package Task2;
 
-//import java.util.concurrent.Semaphore;
-
 public class Buffer {
 	
 	private int[] buffer = new int[] {0,0};
@@ -9,7 +7,7 @@ public class Buffer {
 	private int last = 0;
 	private int size = 2;
 	private Semaphore numberInBuffer = new Semaphore(0);
-	private Semaphore numberEmptySpaces = new Semaphore(2);
+	private Semaphore numberEmptySpaces = new Semaphore(10);
 	private Semaphore generalSharedDataMutex = new Semaphore(1);
 	
 	public void put(int input) throws InterruptedException {
@@ -26,7 +24,7 @@ public class Buffer {
 		generalSharedDataMutex.acquire();
 		numberEmptySpaces.release();
 		int tempToReturn = buffer[start];
-		start = (start + 1) % size; 
+		start = (start + 1) % size;
 		generalSharedDataMutex.release();
 		return tempToReturn;
 	}
