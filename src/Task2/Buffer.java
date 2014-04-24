@@ -1,6 +1,5 @@
 package Task2;
 
-import java.util.Arrays;
 import java.util.concurrent.Semaphore;
 
 public class Buffer {
@@ -29,9 +28,7 @@ public class Buffer {
 		System.out.println("Past put semaphore entry 3");
 		buffer[last] = input;
 		last = (last + 1) % size;
-//		jNumberEmptySpaces.acquire(); // Order, move up? /////// remove me?
 //		generalSharedDataMutex.notifySemaphore();
-		System.out.println(Arrays.toString(buffer) + " semaphore: "+ jNumberInBuffer.availablePermits());
 		jGeneralSharedDataMutex.release();
 	}
 	
@@ -47,7 +44,6 @@ public class Buffer {
 		System.out.println("Past get semaphore entry 3");
 		int tempToReturn = buffer[start];
 		start = (start + 1) % size; 
-//		jNumberInBuffer.acquire(); // Order, move up? /////// remove me?
 //		generalSharedDataMutex.notifySemaphore();
 		jGeneralSharedDataMutex.release();
 		return tempToReturn;
