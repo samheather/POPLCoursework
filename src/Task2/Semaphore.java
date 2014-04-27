@@ -17,5 +17,9 @@ public class Semaphore {
 		value++;
 		notifyAll();
 	}
+	
+	public synchronized int getCurrentValue() {
+		return value;		
+	}
 
 }
