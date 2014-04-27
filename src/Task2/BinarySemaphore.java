@@ -13,12 +13,11 @@ public class BinarySemaphore {
 		generalSemaphore = new Semaphore(initial);
 	}
 	
-	//TODO(samheather) synchronized below?
-	public void acquire() throws InterruptedException { // Synchronized?
+	public synchronized void acquire() throws InterruptedException {
 		generalSemaphore.acquire();
 	}
 	
-	public synchronized void release() { // Synchronized?
+	public synchronized void release() {
 		if (generalSemaphore.getCurrentValue() != 1) {
 			generalSemaphore.release();
 		}
