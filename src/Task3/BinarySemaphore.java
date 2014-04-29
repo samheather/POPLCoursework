@@ -22,4 +22,8 @@ public class BinarySemaphore {
 			generalSemaphore.release();
 		}
 	}
+	
+	public synchronized int getCurrentValue() {
+		return generalSemaphore.getCurrentValue();
+	}
 }

@@ -24,12 +24,4 @@ public class Buffer {
 		notifyAll();
 		return temp;
 	}
-	
-	public void nsPut(int input) {
-		
-	}
-	
-	public int nsGet() {
-		
-	}
 }
