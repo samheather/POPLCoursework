@@ -1,6 +1,6 @@
 //TODO(samheather) this class needs checking
 
-package Task2;
+package Task3;
 
 public class BinarySemaphore {
 
