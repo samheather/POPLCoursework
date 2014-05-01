@@ -1,29 +1,20 @@
-//TODO(samheather) this class needs checking
-
 package Task3;
 
-public class BinarySemaphore {
+public class BinarySemaphore extends Semaphore {
 
-	private Semaphore generalSemaphore;
-	
-	public BinarySemaphore(int initial) {
-		if (initial != 0 || initial != 1) {
-			throw new IllegalArgumentException("An input integer of eiter 0 or 1 is required");
-		}
-		generalSemaphore = new Semaphore(initial);
+	public BinarySemaphore(int count) {
+		super(count);
 	}
-	
-	public synchronized void acquire() throws InterruptedException {
-		generalSemaphore.acquire();
-	}
-	
+
+	@Override
 	public synchronized void release() {
-		if (generalSemaphore.getCurrentValue() != 1) {
-			generalSemaphore.release();
+		if (value != 1) {
+			value++;
+			notifyAll();
 		}
-	}
-	
-	public synchronized int getCurrentValue() {
-		return generalSemaphore.getCurrentValue();
+		else {
+			System.out.println("Tried to pre-release");
+			System.exit(0);
+		}
 	}
 }
