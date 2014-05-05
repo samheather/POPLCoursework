@@ -7,6 +7,8 @@ public class BufferNonSync {
 	private int last = 0;
 	private final int size = 2;
 	private int numberInBuffer = 0;
+	
+	// TODO Naturally I'd want to set above to volatile, but not sure if it's allowed within the assessment paramters.
 
 	// Monitor variables
 	private BinarySemaphore monitorSemaphore = new BinarySemaphore(1);
