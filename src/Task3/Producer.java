@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Producer extends Thread {
 
-	private Buffer buffer;
+	private BufferNonSync buffer;
 	
-	public Producer(Buffer buffer) {
+	public Producer(BufferNonSync buffer) {
 		this.buffer = buffer;
 	}
 
@@ -16,7 +16,7 @@ public class Producer extends Thread {
 		while (true) {
 			int intToWrite = randomGenerator.nextInt(100);
 			try {
-				buffer.put(intToWrite);
+				buffer.put(intToWrite,1);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

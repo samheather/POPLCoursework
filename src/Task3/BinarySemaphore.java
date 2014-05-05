@@ -13,7 +13,7 @@ public class BinarySemaphore extends Semaphore {
 			notifyAll();
 		}
 		else {
-			System.out.println("Tried to pre-release");
+			System.out.println("Tried to release binary semaphore whislt val=1");
 			System.exit(0);
 		}
 	}

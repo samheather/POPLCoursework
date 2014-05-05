@@ -2,9 +2,9 @@ package Task3;
 
 public class Consumer extends Thread {
 	
-	private Buffer buffer;
+	private BufferNonSync buffer;
 
-	public Consumer(Buffer buffer) {
+	public Consumer(BufferNonSync buffer) {
 		this.buffer = buffer;
 	}
 
@@ -12,7 +12,7 @@ public class Consumer extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				System.out.println(buffer.get());
+				System.out.println(buffer.get(1));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
