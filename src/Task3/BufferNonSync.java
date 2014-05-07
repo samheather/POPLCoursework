@@ -12,7 +12,7 @@ public class BufferNonSync {
 
 	// Monitor variables
 	private BinarySemaphore monitorSemaphore = new BinarySemaphore(1);
-	private Semaphore notifyCalled = new Semaphore(0);
+	private BinarySemaphore notifyCalled = new BinarySemaphore(0);
 	
 	private int blocksWaitingCount = 0;
 	private final Object lockForBlocksWaitingCount = new Object();

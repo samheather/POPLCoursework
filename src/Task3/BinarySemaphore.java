@@ -12,9 +12,5 @@ public class BinarySemaphore extends Semaphore {
 			value++;
 			notifyAll();
 		}
-		else {
-			System.out.println("Tried to release binary semaphore whislt val=1");
-			System.exit(0);
-		}
 	}
 }
