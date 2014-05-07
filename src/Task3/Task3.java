@@ -3,7 +3,6 @@ package Task3;
 public class Task3 {
 	
 	public static void main(String[] args) {
-//		Buffer mainBuffer = new Buffer();
 		BufferNonSync mainBuffer = new BufferNonSync();
 		
 		Producer p1 = new Producer(mainBuffer);
