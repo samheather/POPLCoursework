@@ -34,14 +34,10 @@ public class BufferNonSync {
 		numberInBuffer++;
 
 		// Equivalent of notifyAll()
-//		while (val() > 0) {
-//			while (notifyCalled.getCurrentValue() == 1) {
-//				// Do nothing
-//			}
-//			dec();
-//			notifyCalled.release();
-//		}
-		for (int i = val(); i>0; i--) {
+		while (val() > 0) {
+			while (notifyCalled.getCurrentValue() == 1) {
+				// Do nothing
+			}
 			dec();
 			notifyCalled.release();
 		}
@@ -69,14 +65,10 @@ public class BufferNonSync {
 		numberInBuffer--;
 
 		// Equivalent of notifyAll()
-//		while (val() > 0) {
-//			while (notifyCalled.getCurrentValue() == 1) {
-//				// Do nothing
-//			}
-//			dec();
-//			notifyCalled.release();
-//		}
-		for (int i = val(); i>0; i--) {
+		while (val() > 0) {
+			while (notifyCalled.getCurrentValue() == 1) {
+				// Do nothing
+			}
 			dec();
 			notifyCalled.release();
 		}
