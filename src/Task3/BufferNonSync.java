@@ -13,15 +13,14 @@ public class BufferNonSync {
 	private BinarySemaphore notifyCalled = new BinarySemaphore(0);
 	
 	private int blocksWaitingCount = 0;
-	private final Object lockForBlocksWaitingCount = new Object();
 	
 	public void put(int input) throws InterruptedException {
 		monitorSemaphore.acquire();
 
 		while (numberInBuffer == size) {
 			// Equivalent of wait()
-			monitorSemaphore.release();
 			inc();
+			monitorSemaphore.release();
 			notifyCalled.acquire();
 			monitorSemaphore.acquire();
 		}
@@ -51,8 +50,8 @@ public class BufferNonSync {
 
 		while (numberInBuffer == 0) {
 			// Equivalent of wait()
-			monitorSemaphore.release();
 			inc();
+			monitorSemaphore.release();
 			notifyCalled.acquire();
 			monitorSemaphore.acquire();
 		}
@@ -83,21 +82,15 @@ public class BufferNonSync {
 	}
 	
 	private void inc() {
-		synchronized (lockForBlocksWaitingCount) {
-			blocksWaitingCount++;
-		}
+		blocksWaitingCount++;
 	}
 	
 	private void dec() {
-		synchronized (lockForBlocksWaitingCount) {
-			blocksWaitingCount--;
-		}
+		blocksWaitingCount--;
 	}
 	
 	private int val() {
-		synchronized (lockForBlocksWaitingCount) {
-			return blocksWaitingCount;
-		}
+		return blocksWaitingCount;
 	}
 	
 }
