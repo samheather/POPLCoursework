@@ -22,5 +22,4 @@ public class Semaphore {
 		return value;
 	}
 
-
 }
