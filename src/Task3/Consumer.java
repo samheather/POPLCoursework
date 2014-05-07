@@ -12,7 +12,7 @@ public class Consumer extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				System.out.println(buffer.get(1));
+				System.out.println(buffer.get());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

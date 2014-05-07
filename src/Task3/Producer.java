@@ -16,7 +16,7 @@ public class Producer extends Thread {
 		while (true) {
 			int intToWrite = randomGenerator.nextInt(100);
 			try {
-				buffer.put(intToWrite,1);
+				buffer.put(intToWrite);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
