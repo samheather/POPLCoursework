@@ -19,7 +19,7 @@ public class BufferNonSync {
 
 		while (numberInBuffer == size) {
 			// Equivalent of wait()
-			inc();
+			blocksWaitingCount++;
 			monitorSemaphore.release();
 			notifyCalled.acquire();
 			monitorSemaphore.acquire();
@@ -31,11 +31,11 @@ public class BufferNonSync {
 		numberInBuffer++;
 
 		// Equivalent of notifyAll()
-		while (val() > 0) {
+		while (blocksWaitingCount > 0) {
 			while (notifyCalled.getCurrentValue() == 1) {
 				// Do nothing
 			}
-			dec();
+			blocksWaitingCount--;
 			notifyCalled.release();
 		}
 		while (notifyCalled.getCurrentValue() != 0) {
@@ -50,7 +50,7 @@ public class BufferNonSync {
 
 		while (numberInBuffer == 0) {
 			// Equivalent of wait()
-			inc();
+			blocksWaitingCount++;
 			monitorSemaphore.release();
 			notifyCalled.acquire();
 			monitorSemaphore.acquire();
@@ -62,11 +62,11 @@ public class BufferNonSync {
 		numberInBuffer--;
 
 		// Equivalent of notifyAll()
-		while (val() > 0) {
+		while (blocksWaitingCount > 0) {
 			while (notifyCalled.getCurrentValue() == 1) {
 				// Do nothing
 			}
-			dec();
+			blocksWaitingCount--;
 			notifyCalled.release();
 		}
 		while (notifyCalled.getCurrentValue() != 0) {
@@ -79,18 +79,6 @@ public class BufferNonSync {
 		// Compiler needs to make a temp variable where the return would have been,
 		// add the release for the monitor semaphore before this point and then
 		// return the temp value afterwards.
-	}
-	
-	private void inc() {
-		blocksWaitingCount++;
-	}
-	
-	private void dec() {
-		blocksWaitingCount--;
-	}
-	
-	private int val() {
-		return blocksWaitingCount;
 	}
 	
 }
